@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>piedra papel o tijeras</title>
+    </head>
+    <script>
+// crear funcion para que la computadora eliga su mano random
+    function computerPlay(){
+        let numero=Math.floor(Math.random()*100)+1;
+        console.log(numero)
+        if(numero<=33){
+            return "papel"
+        } else if(numero>33 && numero<66){
+            return "rock"
+        } else{
+            return "tijeras"
+        }
+    }
+  //crear funcion para jugar un round de piedras papel y tijeras 
+    function round(playerSelection,computerSelection){
+      if (playerSelection.toLowerCase() === "rock" && computerSelection==="tijeras"){
+        return "ganaste!, piedra le gana a tijeras"
+      }else if(playerSelection.toLowerCase()=== "rock" && computerSelection==="papel"){
+        return "perdiste!, papel le gana a piedra"
+      }else if (playerSelection.toLowerCase()=== "rock" && computerSelection==="rock"){
+        return "empate"
+      }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="tijeras"){
+        return "empate"
+      }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="papel"){
+        return "ganaste!, tijeras le gana a papel"
+      }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="rock"){
+        return "perdiste! piedra le gana a tijeras"
+      }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="tijeras"){
+        return "perdiste!, tijeras le gana a papel"
+      }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="rock"){
+        return "ganaste!, papel le gana a piedra"
+      }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="papel"){
+        return "empate"
+      }else{
+        return "ingresa jugada valida!"
+      }
+    }
+
+    function game(){
+      for (let i = 0; i < 5; i++) {
+      console.log(round(prompt("eligue tu mano",""),computerPlay()))
+    }
+
+    //crear funcion para mantener la puntacion
+    function score(){
+      let resultado= round()
+      let playerScore = 0
+      let computerScore = 0
+      let draw = 0
+
+      if (resultado === "ganaste!, papel le gana a piedra"  || "ganaste!, tijeras le gana a papel" || "ganaste!, piedra le gana a tijeras" ){
+        playerScore++
+      }
+      else if(resultado === "perdiste!, tijeras le gana a papel" || "perdiste! piedra le gana a tijeras" ||"perdiste!, papel le gana a piedra" ){
+        computerScore++
+      }
+      else if (resultado === "empate"){
+        draw++
+      }
+
+      if (playerScore>= 3){
+        console.log("gana el jugador!")
+      }
+      else if(computerScore>=3){
+        console.log("gana la computadora")
+      }
+      else if(draw>=3){
+        console.log("empate")
+      }
+    }
+    console.log(score())
+  }
+
+    </script>
+</html>
