@@ -20,50 +20,45 @@
   //crear funcion para jugar un round de piedras papel y tijeras 
     function round(playerSelection,computerSelection){
       if (playerSelection.toLowerCase() === "rock" && computerSelection==="tijeras"){
+        playerScore++
         return "ganaste!, piedra le gana a tijeras"
       }else if(playerSelection.toLowerCase()=== "rock" && computerSelection==="papel"){
+        computerScore++
         return "perdiste!, papel le gana a piedra"
       }else if (playerSelection.toLowerCase()=== "rock" && computerSelection==="rock"){
+        draw++
         return "empate"
       }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="tijeras"){
+        draw++
         return "empate"
       }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="papel"){
+        playerScore++
         return "ganaste!, tijeras le gana a papel"
       }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="rock"){
+        computerScore++
         return "perdiste! piedra le gana a tijeras"
       }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="tijeras"){
+        computerScore++
         return "perdiste!, tijeras le gana a papel"
       }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="rock"){
+        playerScore++
         return "ganaste!, papel le gana a piedra"
       }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="papel"){
+        draw++
         return "empate"
       }else{
         return "ingresa jugada valida!"
       }
     }
-
-    function game(){
-      for (let i = 0; i < 5; i++) {
-      console.log(round(prompt("eligue tu mano",""),computerPlay()))
-    }
-
-    //crear funcion para mantener la puntacion
-    function score(){
-      let resultado= round()
+    //definiendo variables globales
       let playerScore = 0
       let computerScore = 0
       let draw = 0
-
-      if (resultado === "ganaste!, papel le gana a piedra"  || "ganaste!, tijeras le gana a papel" || "ganaste!, piedra le gana a tijeras" ){
-        playerScore++
+    function game(){
+      for (let i = 0; i < 5; i++) {
+      console.log(round(prompt("eligue tu mano",""),computerPlay()))
       }
-      else if(resultado === "perdiste!, tijeras le gana a papel" || "perdiste! piedra le gana a tijeras" ||"perdiste!, papel le gana a piedra" ){
-        computerScore++
-      }
-      else if (resultado === "empate"){
-        draw++
-      }
-
+    //define la puntacion y ganador
       if (playerScore>= 3){
         console.log("gana el jugador!")
       }
@@ -74,8 +69,5 @@
         console.log("empate")
       }
     }
-    console.log(score())
-  }
-
     </script>
 </html>
