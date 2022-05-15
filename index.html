@@ -61,12 +61,21 @@
     //define la puntacion y ganador
       if (playerScore>= 3){
         console.log("gana el jugador!")
+        playerScore = 0
+        computerScore = 0
+        draw = 0
       }
       else if(computerScore>=3){
         console.log("gana la computadora")
+        playerScore = 0
+        computerScore = 0
+        draw = 0
       }
       else if(draw>=3){
         console.log("empate")
+        playerScore = 0
+        computerScore = 0
+        draw = 0
       }
     }
     </script>
