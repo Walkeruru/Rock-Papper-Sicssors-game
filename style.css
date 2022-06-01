@@ -1,0 +1,24 @@
+html{
+    background-color: aquamarine;
+}
+.logo{
+    width: 8rem;;
+    height: auto;
+    margin-left: 24px;
+    padding: 24px;
+}
+.titulo{
+    font-family: Roboto;
+    font-size: 64px;
+    margin-left: 24px;
+}
+.logti{
+    display: flex;
+}
+.botones{
+    align-content: space-between;
+    margin: 24px;
+    padding: 24px;
+    gap: 24px;
+    display: flex;
+}

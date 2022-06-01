@@ -3,7 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>piedra papel o tijeras</title>
+        <link rel="stylesheet" href="style.css">
     </head>
+    <body>
+      <div class="logti">
+        <img class="logo" src="./img/logo.png" alt="logo piedra papel y tijeras">
+        <h3 class="titulo">Rock, Paper, Sciscors</h3> </div>
+       <div class="botones">
+        <button id="rock">PIEDRA</button>
+        <button id="papel">PAPEL</button>
+        <button id="tijeras">TIJERAS</button></div>
+        <div class="resultadosdiv"></div>
+        <div class="tablero"></div>
+    </body>
     <script>
 // crear funcion para que la computadora eliga su mano random
     function computerPlay(){
@@ -18,65 +30,66 @@
         }
     }
   //crear funcion para jugar un round de piedras papel y tijeras 
-    function round(playerSelection,computerSelection){
+  function round(playerSelection,computerSelection){
       if (playerSelection.toLowerCase() === "rock" && computerSelection==="tijeras"){
         playerScore++
-        return "ganaste!, piedra le gana a tijeras"
-      }else if(playerSelection.toLowerCase()=== "rock" && computerSelection==="papel"){
-        computerScore++
-        return "perdiste!, papel le gana a piedra"
-      }else if (playerSelection.toLowerCase()=== "rock" && computerSelection==="rock"){
+        return "GANASTE!, piedra le gana a tijeras"
+      }else if(playerSelection.toLowerCase()=== computerSelection){
         draw++
-        return "empate"
-      }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="tijeras"){
-        draw++
-        return "empate"
+        return "EMPATE"
       }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="papel"){
         playerScore++
-        return "ganaste!, tijeras le gana a papel"
-      }else if(playerSelection.toLowerCase()=== "tijeras" && computerSelection==="rock"){
-        computerScore++
-        return "perdiste! piedra le gana a tijeras"
-      }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="tijeras"){
-        computerScore++
-        return "perdiste!, tijeras le gana a papel"
+        return "GANASTE!, tijeras le gana a papel"
       }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="rock"){
         playerScore++
-        return "ganaste!, papel le gana a piedra"
-      }else if(playerSelection.toLowerCase()=== "papel" && computerSelection==="papel"){
-        draw++
-        return "empate"
+        return "GANASTE!, papel le gana a piedra"
       }else{
-        return "ingresa jugada valida!"
+        computerScore++
+        return "PERDISTE!";
       }
     }
     //definiendo variables globales
       let playerScore = 0
       let computerScore = 0
       let draw = 0
-    function game(){
-      for (let i = 0; i < 5; i++) {
-      console.log(round(prompt("eligue tu mano",""),computerPlay()))
-      }
-    //define la puntacion y ganador
-      if (playerScore>= 3){
-        console.log("gana el jugador!")
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+     const play = round(button.id,computerPlay());
+    marcadorp.textContent = `${playerScore}`;
+    marcadorc.textContent= `${computerScore}`;
+    ganadorRonda.textContent= play
+    marcadord.textContent=`${draw}`;
+     if (playerScore == 3){
         playerScore = 0
         computerScore = 0
         draw = 0
+        return ganadorRonda.textContent="GANA EL JUGADOR!"
       }
-      else if(computerScore>=3){
-        console.log("gana la computadora")
+      else if(computerScore == 3){
         playerScore = 0
         computerScore = 0
         draw = 0
+        return  ganadorRonda.textContent= "GANA LA COMPUTADORA!"
       }
-      else if(draw>=3){
-        console.log("empate")
+      else if(draw == 3){
         playerScore = 0
         computerScore = 0
         draw = 0
+        return  ganadorRonda.textContent= "EMPATE, JUEGA DE NUEVO"
       }
-    }
+  });
+});
+    const ganadorRonda = document.querySelector(".resultadosdiv")
+    const tablero = document.querySelector(".tablero");
+    const marcadorp = document.createElement("div");
+    marcadorp.style.cssText="color:blue";
+    tablero.appendChild(marcadorp)
+    const marcadorc = document.createElement("div")
+    marcadorc.style.cssText="color:red"
+    tablero.appendChild(marcadorc)
+    const marcadord=document.createElement("div");
+    marcadord.style.cssText="color:grey";
+    tablero.appendChild(marcadord)
     </script>
 </html>
