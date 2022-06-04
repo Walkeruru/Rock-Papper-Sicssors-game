@@ -7,14 +7,20 @@
     </head>
     <body>
       <div class="logti">
-        <img class="logo" src="./img/logo.png" alt="logo piedra papel y tijeras">
+        <img class="logo" src="https://github.com/Walkeruru/game/blob/rps-ui/img/logo.png?raw=true" alt="logo piedra papel y tijeras">
         <h3 class="titulo">Rock, Paper, Sciscors</h3> </div>
+        <div class="fotos">
+          <img class="piedrafoto" src="https://ponceelrelajado.com/juego/img/piedra.png" alt="piedra">
+          <img class="papelfoto" src="https://ponceelrelajado.com/juego/img/papel.png" alt="papel">
+          <img class="tijerasfoto" src="https://ponceelrelajado.com/juego/img/tijera.png" alt="tijeras">
+        </div>
        <div class="botones">
         <button id="rock">PIEDRA</button>
         <button id="papel">PAPEL</button>
         <button id="tijeras">TIJERAS</button></div>
         <div class="resultadosdiv"></div>
         <div class="tablero"></div>
+        <div class="footer">@Walkeruru</div>
     </body>
     <script>
 // crear funcion para que la computadora eliga su mano random
@@ -56,27 +62,40 @@
     buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
      const play = round(button.id,computerPlay());
-    marcadorp.textContent = `${playerScore}`;
-    marcadorc.textContent= `${computerScore}`;
+    marcadorp.textContent =`Jugador ${playerScore}`;
+    marcadorc.textContent= `AI ${computerScore}`;
     ganadorRonda.textContent= play
-    marcadord.textContent=`${draw}`;
+    marcadord.textContent=`Empate ${draw}`;
+    ganadorgame.textContent='';
      if (playerScore == 3){
         playerScore = 0
         computerScore = 0
         draw = 0
-        return ganadorRonda.textContent="GANA EL JUGADOR!"
+        ganadorRonda.textContent='';  
+        marcadorp.textContent ='';
+        marcadorc.textContent='';
+        marcadord.textContent='';
+        return ganadorgame.textContent="GANA EL JUGADOR!";
       }
       else if(computerScore == 3){
         playerScore = 0
         computerScore = 0
         draw = 0
-        return  ganadorRonda.textContent= "GANA LA COMPUTADORA!"
+        ganadorRonda.textContent='';  
+        marcadorp.textContent ='';
+        marcadorc.textContent='';
+        marcadord.textContent='';
+        return  ganadorgame.textContent= "GANA LA COMPUTADORA!";
       }
       else if(draw == 3){
         playerScore = 0
         computerScore = 0
         draw = 0
-        return  ganadorRonda.textContent= "EMPATE, JUEGA DE NUEVO"
+        ganadorRonda.textContent='';  
+        marcadorp.textContent ='';
+        marcadorc.textContent='';
+        marcadord.textContent='';
+        return  ganadorgame.textContent= "EMPATE, JUEGA DE NUEVO";
       }
   });
 });
@@ -91,5 +110,12 @@
     const marcadord=document.createElement("div");
     marcadord.style.cssText="color:grey";
     tablero.appendChild(marcadord)
+    const ganadorgame = document.createElement('div');
+    tablero.appendChild(ganadorgame);
+    ganadorgame.classList.add('titulo','tableroyresultado');
+    ganadorRonda.classList.add('titulo','tableroyresultado');
+    marcadorc.classList.add('marcador');
+    marcadord.classList.add('marcador');
+    marcadorp.classList.add('marcador');
     </script>
 </html>
