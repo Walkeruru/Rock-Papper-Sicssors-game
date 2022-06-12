@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>piedra papel o tijeras</title>
+        <title>✂️ Piedra Papel o Tijeras</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -23,10 +23,9 @@
         <div class="footer">@Walkeruru</div>
     </body>
     <script>
-// crear funcion para que la computadora eliga su mano random
+// elige la mano de la computadora mediante un calculo random
     function computerPlay(){
         let numero=Math.floor(Math.random()*100)+1;
-        console.log(numero)
         if(numero<=33){
             return "papel"
         } else if(numero>33 && numero<66){
@@ -35,7 +34,7 @@
             return "tijeras"
         }
     }
-  //crear funcion para jugar un round de piedras papel y tijeras 
+  //funcion para jugar un round de piedras papel y tijeras 
   function round(playerSelection,computerSelection){
       if (playerSelection.toLowerCase() === "rock" && computerSelection==="tijeras"){
         playerScore++
@@ -102,20 +101,17 @@
     const ganadorRonda = document.querySelector(".resultadosdiv")
     const tablero = document.querySelector(".tablero");
     const marcadorp = document.createElement("div");
-    marcadorp.style.cssText="color:blue";
     tablero.appendChild(marcadorp)
     const marcadorc = document.createElement("div")
-    marcadorc.style.cssText="color:red"
     tablero.appendChild(marcadorc)
     const marcadord=document.createElement("div");
-    marcadord.style.cssText="color:grey";
     tablero.appendChild(marcadord)
     const ganadorgame = document.createElement('div');
     tablero.appendChild(ganadorgame);
     ganadorgame.classList.add('titulo','tableroyresultado');
     ganadorRonda.classList.add('titulo','tableroyresultado');
-    marcadorc.classList.add('marcador');
-    marcadord.classList.add('marcador');
-    marcadorp.classList.add('marcador');
+    marcadorc.classList.add('marcador','marcadorc');
+    marcadord.classList.add('marcador','marcadord');
+    marcadorp.classList.add('marcador','marcadorp');
     </script>
 </html>
