@@ -1,5 +1,5 @@
 body{
-    background: #000000 center center fixed;
+    background:#d5adad center center fixed;
 }
 .logo{
     width: 100px;
@@ -38,6 +38,7 @@ margin-left:12px;
     border: 5px;
     border-color: rgb(117,61,198);
     border-style: solid;
+    border-radius: 1rem;
 }
 .tableroyresultado{
 text-align: center;
@@ -74,4 +75,19 @@ img{
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+.imgmano{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1em;
+}
+.elec{
+    display:flex;
+    justify-content: space-evenly;
+    color: white;
+    font-family: Georgia, serif;
+    padding: 1em;
+}
+.borderfoto{
+    width:100px;
 }
