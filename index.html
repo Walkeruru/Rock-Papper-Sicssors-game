@@ -60,7 +60,23 @@
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-     const play = round(button.id,computerPlay());
+     const play = round(button.id,computerSelection=computerPlay());
+    eleccionplayer.textContent=`Elegiste ${button.id}`;
+    eleccionai.textContent=`La computadora eligio ${computerSelection}`;
+    //muestra la foto de la mano del jugador
+    if(button.id=="rock"){
+      fotoeleccion.setAttribute("style","content: url(https://ponceelrelajado.com/juego/img/piedra.png)")}
+      else if(button.id=="papel"){
+        fotoeleccion.setAttribute("style","content: url(https://ponceelrelajado.com/juego/img/papel.png)")}
+      else{
+        fotoeleccion.setAttribute("style","content: url(https://ponceelrelajado.com/juego/img/tijera.png)")};
+   //muestra la foto de la mano de la computadora
+        if(computerSelection=="rock"){
+      fotoeleccionai.setAttribute("style","content: url(https://ponceelrelajado.com/juego/img/piedra.png)")}
+      else if(computerSelection=="papel"){
+        fotoeleccionai.setAttribute("style","content: url(https://ponceelrelajado.com/juego/img/papel.png)")}
+      else{
+        fotoeleccionai.setAttribute("style","content: url(https://ponceelrelajado.com/juego/img/tijera.png)")};
     marcadorp.textContent =`Jugador ${playerScore}`;
     marcadorc.textContent= `AI ${computerScore}`;
     ganadorRonda.textContent= play
@@ -100,12 +116,28 @@
 });
     const ganadorRonda = document.querySelector(".resultadosdiv")
     const tablero = document.querySelector(".tablero");
+    const containerElecciones= document.createElement("div");
+    tablero.appendChild(containerElecciones);
+    containerElecciones.classList.add("elec");
+    const eleccionplayer= document.createElement("div");
+    containerElecciones.appendChild(eleccionplayer);
+    const eleccionai=document.createElement("div");
+    containerElecciones.appendChild(eleccionai);
+    const containerfotos=document.createElement("div");
+    tablero.appendChild(containerfotos);
+    containerfotos.classList.add("imgmano");
+    const fotoeleccion=document.createElement("div");
+    containerfotos.appendChild(fotoeleccion);
+    fotoeleccion.classList.add("borderfoto");
+    const fotoeleccionai=document.createElement("div");
+    containerfotos.appendChild(fotoeleccionai);
+    fotoeleccionai.classList.add("borderfoto");
     const marcadorp = document.createElement("div");
-    tablero.appendChild(marcadorp)
-    const marcadorc = document.createElement("div")
-    tablero.appendChild(marcadorc)
+    tablero.appendChild(marcadorp);
+    const marcadorc = document.createElement("div");
+    tablero.appendChild(marcadorc);
     const marcadord=document.createElement("div");
-    tablero.appendChild(marcadord)
+    tablero.appendChild(marcadord);
     const ganadorgame = document.createElement('div');
     tablero.appendChild(ganadorgame);
     ganadorgame.classList.add('titulo','tableroyresultado');
